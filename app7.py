@@ -108,7 +108,7 @@ if Press:
     st.subheader("You have selected")
     st.write(data)
     
-    st.subheader("📊 Patient graph")         
+    st.subheader("📊 costomer graph")         
     st.bar_chart(data.set_index("Feature"),color="#8993CC")
     st.write(" ")
     st.image("p0.png")
