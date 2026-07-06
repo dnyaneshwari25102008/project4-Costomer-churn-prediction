@@ -4,6 +4,7 @@ import pickle
 import streamlit as st
 
 pipe = pickle.load(open("pipe.pkl","rb"))
+df = pd.read_csv('cleaned_data.csv')
 
 
 st.markdown("""
@@ -32,9 +33,10 @@ with col1:
     Dependents = st.selectbox('Dependents ?',['Yes', 'No'])
     tenure = st.number_input('Tenure (in months) :',value = 1,min_value = 1, max_value = 200, step = 50)
     PhoneService = st.selectbox('Phone Service ?',['Yes', 'No'])
-with col2:        
+     
     MultipleLines = st.selectbox('Multiple Lines ?',['Yes', 'No'])
-
+with col2:   
+    InternetService = st.selectbox('Internet Service :',sorted(df['InternetService'].unique()))
     OnlineSecurity = st.selectbox('Security Service ?',['Yes', 'No'])
     OnlineBackup = st.selectbox("Online Backup ?",['Yes','No'])
 
@@ -48,6 +50,8 @@ with col3:
     PaymentMethod = st.selectbox('Payment Method:',sorted(df['PaymentMethod'].unique()))
     MonthlyCharges = st.number_input("Monthly Charges:",value = 1, min_value = 1, max_value = 5000)
     TotalCharges = st.number_input("Total Charges:",value = 1, min_value = 1, max_value = 10000)
+
+
 
 st.markdown("__________")
 
@@ -70,12 +74,12 @@ if Press:
 
 
     myip = [[gender1, SeniorCitizen1, Partner1, Dependents1,
-       tenure, PhoneService1, MultipleLines1,
+       tenure, PhoneService1, MultipleLines1, InternetService,
        OnlineSecurity1, OnlineBackup1, DeviceProtection1, TechSupport1,
        StreamingTV1, StreamingMovies1, Contract, PaperlessBilling1,
        PaymentMethod, MonthlyCharges, TotalCharges]]
     col = ['gender', 'SeniorCitizen', 'Partner', 'Dependents',
-       'tenure', 'PhoneService', 'MultipleLines',
+       'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
        'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
        'PaymentMethod', 'MonthlyCharges', 'TotalCharges']
