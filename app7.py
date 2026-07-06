@@ -4,7 +4,7 @@ import pickle
 import streamlit as st
 
 pipe = pickle.load(open("pipe.pkl","rb"))
-df = pd.read_csv('data_cleaning.csv')
+df = pd.read_csv('cleaned_data.csv')
 
 
 st.markdown("""
