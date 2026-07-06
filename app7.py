@@ -49,8 +49,6 @@ with col3:
     MonthlyCharges = st.number_input("Monthly Charges:",value = 1, min_value = 1, max_value = 5000)
     TotalCharges = st.number_input("Total Charges:",value = 1, min_value = 1, max_value = 10000)
 
-
-
 st.markdown("__________")
 
 Press = st.button('predict result')
