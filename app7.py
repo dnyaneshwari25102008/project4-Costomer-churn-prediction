@@ -4,6 +4,7 @@ import pickle
 import streamlit as st
 
 pipe = pickle.load(open("pipe.pkl","rb"))
+df = pd.read_csv('cleaned_data.csv')
 
 
 st.markdown("""
@@ -35,6 +36,7 @@ with col1:
      
     MultipleLines = st.selectbox('Multiple Lines ?',['Yes', 'No'])
 with col2:   
+    InternetService = st.selectbox('Internet Service :',sorted(df['InternetService'].unique()))
     OnlineSecurity = st.selectbox('Security Service ?',['Yes', 'No'])
     OnlineBackup = st.selectbox("Online Backup ?",['Yes','No'])
 
@@ -43,7 +45,9 @@ with col2:
     StreamingTV = st.selectbox('Streaming TV Subscription ?',['Yes', 'No'])
 with col3:
     StreamingMovies = st.selectbox('Streaming Movies subscription ',['Yes', 'No'])
+    Contract = st.selectbox('Contract Type:',sorted(df['Contract'].unique()))
     PaperlessBilling = st.selectbox('Paperless Billing ?',['Yes', 'No'])
+    PaymentMethod = st.selectbox('Payment Method:',sorted(df['PaymentMethod'].unique()))
     MonthlyCharges = st.number_input("Monthly Charges:",value = 1, min_value = 1, max_value = 5000)
     TotalCharges = st.number_input("Total Charges:",value = 1, min_value = 1, max_value = 10000)
 
@@ -70,15 +74,15 @@ if Press:
 
 
     myip = [[gender1, SeniorCitizen1, Partner1, Dependents1,
-       tenure, PhoneService1, MultipleLines1,
+       tenure, PhoneService1, MultipleLines1, InternetService,
        OnlineSecurity1, OnlineBackup1, DeviceProtection1, TechSupport1,
-       StreamingTV1, StreamingMovies1,  PaperlessBilling1,
-        MonthlyCharges, TotalCharges]]
+       StreamingTV1, StreamingMovies1, Contract, PaperlessBilling1,
+       PaymentMethod, MonthlyCharges, TotalCharges]]
     col = ['gender', 'SeniorCitizen', 'Partner', 'Dependents',
-       'tenure', 'PhoneService', 'MultipleLines', 
+       'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
-       'StreamingTV', 'StreamingMovies',  'PaperlessBilling',
-       'MonthlyCharges', 'TotalCharges']
+       'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
+       'PaymentMethod', 'MonthlyCharges', 'TotalCharges']
     table = pd.DataFrame(data = myip, columns = col)
     result = pipe.predict(table)
     if result[0] == 1:
@@ -109,6 +113,7 @@ if Press:
     st.write(" ")
     st.image("p0.png")
     st.write("📈 Helps businesses identify at-risk customers before they churn.Supports targeted retention efforts and improves customer loyalty.")
+
 
 
 
