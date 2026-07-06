@@ -32,10 +32,9 @@ with col1:
     Dependents = st.selectbox('Dependents ?',['Yes', 'No'])
     tenure = st.number_input('Tenure (in months) :',value = 1,min_value = 1, max_value = 200, step = 50)
     PhoneService = st.selectbox('Phone Service ?',['Yes', 'No'])
-     
+with col2:        
     MultipleLines = st.selectbox('Multiple Lines ?',['Yes', 'No'])
-with col2:   
-    InternetService = st.selectbox('Internet Service :',sorted(df['InternetService'].unique()))
+
     OnlineSecurity = st.selectbox('Security Service ?',['Yes', 'No'])
     OnlineBackup = st.selectbox("Online Backup ?",['Yes','No'])
 
@@ -73,12 +72,12 @@ if Press:
 
 
     myip = [[gender1, SeniorCitizen1, Partner1, Dependents1,
-       tenure, PhoneService1, MultipleLines1, InternetService,
+       tenure, PhoneService1, MultipleLines1,
        OnlineSecurity1, OnlineBackup1, DeviceProtection1, TechSupport1,
        StreamingTV1, StreamingMovies1, Contract, PaperlessBilling1,
        PaymentMethod, MonthlyCharges, TotalCharges]]
     col = ['gender', 'SeniorCitizen', 'Partner', 'Dependents',
-       'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
+       'tenure', 'PhoneService', 'MultipleLines',
        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
        'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
        'PaymentMethod', 'MonthlyCharges', 'TotalCharges']
